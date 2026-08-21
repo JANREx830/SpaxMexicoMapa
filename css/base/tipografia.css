@@ -1,0 +1,49 @@
+/* css/base/typography.css */
+/* Tipografía Global */
+html, body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff; /* Color base claro */
+    color: #333; /* Color de texto base */
+}
+
+/* Tipografía Agresiva y Milimétrica */
+.title-premium {
+    font-weight: 900 !important;
+    letter-spacing: -2px !important;
+    line-height: 0.95 !important;
+}
+
+@media (max-width: 768px) {
+    .title-premium {
+        font-size: 2.8rem !important;
+        letter-spacing: -1px !important;
+        line-height: 1.1 !important;
+    }
+}
+
+.title-premium-sm {
+    font-weight: 900 !important;
+    letter-spacing: -1px !important;
+    line-height: 1.1 !important;
+}
+
+@media (max-width: 768px) {
+    .title-premium-sm {
+        font-size: 2.3rem !important;
+        line-height: 1.2 !important;
+    }
+}
+
+/* Utilidades de Tipografía */
+.fw-black { font-weight: 900 !important; }
+.text-justify-custom { line-height: 1.8; text-align: justify; }
+.text-lh-17 { line-height: 1.7; }
+.letter-spacing-1 { letter-spacing: 1px; }
+.letter-spacing-2 { letter-spacing: 2px; }
+.fs-7 { font-size: 0.85rem !important; }
+.lh-16 { line-height: 1.6 !important; }
+
+/* Sombras de Texto */
+.text-shadow-custom { text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+.text-shadow-sm { text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+.text-shadow-hero { text-shadow: 0 4px 15px rgba(0,0,0,0.8); }

@@ -1,0 +1,19 @@
+/* css/layout/grid.css */
+
+/* Fondo de cuadrícula tipo "Blueprint" */
+.bg-blueprint {
+    background-color: #ffffff;
+    background-image: 
+        linear-gradient(var(--grid-color, rgba(13, 110, 58, 0.12)) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color, rgba(13, 110, 58, 0.12)) 1px, transparent 1px);
+    background-size: 40px 40px; 
+    position: relative;
+}
+
+/* Versión para modo oscuro */
+[data-bs-theme="dark"] .bg-blueprint {
+    background-color: #121212 !important;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px) !important;
+}

@@ -1,0 +1,236 @@
+/* PALETTE & DEFAULTS */
+:root {
+    --spax-green: #0d6e3a;
+    --spax-dark: #2c2c2c;
+    --grid-color: rgba(13, 110, 58, 0.12); /* Cuadrícula un poco más definida */
+    --text-main: #333333;
+    --shadow-float: 0 20px 40px rgba(0,0,0,0.08);
+    --spax-yellow-btn: #fdf5d3; 
+    --spax-cream: #F9F9F8;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff;
+    color: var(--text-main);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* SEARCH SECTION */
+.product-search-section {
+    position: relative;
+    padding: 160px 0 100px 0;
+    background-color: var(--spax-cream);
+    z-index: 20;
+    overflow: hidden; /* Evita que los tornillos se salgan de la sección */
+}
+
+.decor-drawn {
+    position: absolute;
+
+    z-index: 1;
+    pointer-events: none;
+    filter: grayscale(100%);
+}
+
+.search-inputs-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    max-width: 500px;
+}
+
+.input-pill {
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid #d1d1d1;
+    padding: 10px 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--spax-dark);
+    transition: all 0.3s ease;
+}
+.input-pill:focus {
+    border-color: var(--spax-green);
+    outline: none;
+    box-shadow: 0 5px 15px rgba(13, 110, 58, 0.1);
+}
+
+/* MAP SECTION */
+.bg-blueprint {
+    background-color: #ffffff;
+    background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 40px 40px; 
+    position: relative;
+}
+
+.blueprint-section {
+    position: relative;
+    padding: 1px; /* Eliminado para que las columnas vayan de borde a borde */
+    min-height: 80vh;
+    display: flex; /* Mantenemos flex para que la fila hija se pueda estirar verticalmente */
+    overflow: hidden; /* Mantenemos esto para que los tornillos decorativos no generen scroll */
+}
+
+.blueprint-section > .row {
+    flex-grow: 1; /* Hacemos que la fila crezca para ocupar todo el alto del main */
+}
+
+/* El mapa ahora ocupa el 100% de su columna contenedora */
+#map { 
+    width: 100%; 
+    height: 100%; 
+    z-index: 2; /* Para que quede sobre el fondo flotando */
+    border-radius: 30px; 
+    box-shadow: var(--shadow-float); 
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* POPUP STYLING */
+.leaflet-popup-content-wrapper {
+    border-radius: 12px !important;
+    box-shadow: var(--shadow-float);
+    border: none !important;
+}
+
+.leaflet-popup-content {
+    margin: 18px 24px !important;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    min-width: 240px;
+}
+
+.leaflet-popup-tip {
+    box-shadow: none !important;
+}
+
+.spax-popup-title {
+    font-weight: 700;
+    color: var(--spax-green);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.spax-popup-address, .spax-popup-phone {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+.spax-popup-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: 600;
+    color: var(--spax-green);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.spax-popup-link:hover { text-decoration: underline; }
+
+/* Clase para hacer los polígonos del mapa interactivos */
+.leaflet-interactive-spax {
+    cursor: pointer;
+}
+
+/* DISTRIBUTOR LIST STYLES */
+#distributor-list-container {
+    overflow-y: auto;
+    padding-right: 10px; /* Espacio para la barra de scroll */
+}
+
+/* Estilo de la barra de scroll para Webkit (Chrome, Safari) */
+#distributor-list-container::-webkit-scrollbar {
+    width: 8px;
+}
+#distributor-list-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+#distributor-list-container::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+#distributor-list-container::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
+
+.distributor-list-item {
+    padding: 16px 12px;
+    border-bottom: 1px solid #e9e9e9;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+.distributor-list-item:hover {
+    background-color: var(--spax-cream);
+}
+.distributor-list-item h6 {
+    font-weight: 600;
+    color: var(--spax-dark);
+    margin-bottom: 4px;
+}
+.distributor-list-item p {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+/* TOOLTIP FOR STATES ON MAP */
+.spax-state-tooltip {
+    background-color: var(--spax-dark) !important;
+    border: none !important;
+    color: white !important;
+    padding: 6px 12px !important;
+    border-radius: 6px !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+    font-weight: 600;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+.leaflet-tooltip-top:before,
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+    border: none !important; /* Remove default arrow for a cleaner look */
+}
+
+/* INSPIRE SECTION */
+.inspire-section {
+    position: relative;
+    padding: 100px 0; 
+    background-color: #f8f9fa; 
+    z-index: 10;
+}
+
+/* RESPONSIVE */
+@media (max-width: 991.98px) {
+    .blueprint-section { display: block; } /* En móvil, volvemos a block para que se apilen */
+    .blueprint-section [class*="col-lg-"] {
+        min-height: 60vh; /* Damos una altura mínima a las columnas en móvil */
+    }
+    .product-search-section { padding: 120px 0 60px 0; }
+}
+
+@media (max-width: 767.98px) {
+    .product-search-section { padding: 100px 0 40px 0; }
+    .blueprint-section { padding: 0; min-height: auto; } /* En móvil, las secciones se apilan */
+    .blueprint-section .col-12 { height: 60vh; min-height: 450px; }
+    .hero-search-img { 
+        transform: scale(1) !important; 
+        max-height: 280px !important; 
+    }
+    .search-inputs-wrapper { flex-direction: column; }
+    .btn-spax-pill { width: 100%; justify-content: center; }
+}
+
+/* NAVBAR OVERRIDE */
+.navbar-spax {
+    background: radial-gradient(circle at 50% 40%, rgba(21, 139, 75, 1) 0%, rgba(9, 79, 41, 1) 100%) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+    padding-top: 0.8rem !important;
+    padding-bottom: 0.8rem !important;
+    backdrop-filter: none !important;
+}

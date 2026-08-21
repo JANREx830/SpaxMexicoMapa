@@ -1,0 +1,97 @@
+/* css/layout/footer.css */
+
+/*  ESTILOS DEL FOOTER  */
+.footer-link {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-link:hover {
+    color: #009a3d !important;
+    transform: translateX(5px);
+}
+
+.footer-social {
+    transition: all 0.3s ease;
+}
+
+.footer-social:hover {
+    color: #009a3d !important;
+    transform: translateY(-3px) scale(1.1);
+}
+
+.footer-spax {
+    background-color: #1a1a1a;
+}
+
+.logo-footer {
+    height: 45px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.footer-cert-pill {
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-cert-pill img {
+    height: 50px;
+    display: block;
+    width: auto;
+}
+
+.footer-cert-pill:hover {
+    background-color: #e2e6ea;
+    transform: translateY(-2px);
+}
+
+/* Dark Mode Overrides */
+html[data-bs-theme="dark"] .logo-footer,
+html[data-bs-theme="dark"] .footer-social-cert img {
+    filter: brightness(0) invert(1) !important;
+}
+.footer-international-card {
+    background-color: #222222; /* Fondo oscuro sólido */
+    border: 1px solid #333333; /* Borde sutil */
+    transition: all 0.3s ease;
+}
+
+.footer-international-card:hover {
+    background-color: #292929;
+    border-color: var(--spax-green, #0d6e3a);
+}
+
+/* Logo más pequeño */
+.footer-intl-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 2px;
+}
+
+/* Color del subtítulo */
+.footer-intl-subtitle {
+    color: #8c8c8c;
+    transition: color 0.3s ease;
+}
+
+.footer-international-card:hover .footer-intl-subtitle {
+    color: #b3b3b3;
+}
+
+/* Icono de salida */
+.footer-intl-icon {
+    color: #6c757d;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* El icono salta sutilmente hacia arriba y a la derecha */
+.footer-international-card:hover .footer-intl-icon {
+    color: var(--spax-green, #0d6e3a);
+    transform: translate(2px, -2px);
+}

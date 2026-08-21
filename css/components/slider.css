@@ -1,0 +1,38 @@
+/* css/components/slider.css */
+
+/* Slider de texto del Hero */
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out, visibility 0.8s;
+}
+.hero-slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    position: relative; /* Ocupa espacio en el layout */
+}
+
+/* Flechas del slider */
+.slide-arrow {
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.slide-arrow:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* Contenedor del slider para evitar saltos de layout */
+.hero-slider-wrapper { 
+    min-height: 380px !important; 
+}
+@media (min-width: 992px) {
+    .hero-slider-wrapper { min-height: 250px !important; }
+}

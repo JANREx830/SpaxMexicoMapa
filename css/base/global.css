@@ -1,0 +1,283 @@
+.spax-preloader {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--spax-cream);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    transition:
+        opacity 0.55s cubic-bezier(0.65, 0, 0.35, 1),
+        visibility 0.55s;
+}
+
+.spax-preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-content {
+    position: relative;
+    width: 580px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preloader-logo {
+    width: 360px;
+    height: auto;
+    display: block;
+    opacity: 0;
+    transform: scale(0.94);
+    animation:
+        spax-logo-in 0.55s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        0.55s forwards;
+}
+
+.preloader-screw-move {
+    position: absolute;
+    right: 50%;
+    top: 35%;
+    width: 70px;
+    height: 70px;
+    z-index: 5;
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%);
+
+    animation:
+        spax-screw-move 1.15s
+        cubic-bezier(0.22, 0.61, 0.36, 1)
+        forwards;
+}
+
+.preloader-screw {
+    width: 130px;
+    height: auto;
+    display: block;
+
+    animation:
+        spax-screw-spin 0.65s
+        cubic-bezier(0.33, 1, 0.68, 1)
+        forwards;
+
+    filter:
+        drop-shadow(
+            0 5px 5px
+            rgba(0, 0, 0, 0.2)
+        );
+}
+
+@keyframes spax-screw-spin {
+    0% {
+        opacity: 0;
+        transform: rotate(-180deg) scale(0.65);
+        filter:
+            blur(5px)
+            drop-shadow(
+                0 5px 5px
+                rgba(0, 0, 0, 0.2)
+            );
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+        filter:
+            blur(0)
+            drop-shadow(
+                0 5px 5px
+                rgba(0, 0, 0, 0.2)
+            );
+    }
+}
+
+@keyframes spax-screw-move {
+    0% {
+        opacity: 0;
+        transform:
+            translate(-50%, -50%);
+    }
+
+    35% {
+        opacity: 1;
+        transform:
+            translate(-50%, -50%);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translate(250px, -50%);
+    }
+}
+
+@keyframes spax-logo-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.94);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.z-2 { z-index: 2 !important; }
+.z-3 { z-index: 3 !important; }
+.z-10 { z-index: 10 !important; }
+.z-20 { z-index: 20 !important; }
+.z-21 { z-index: 21 !important; }
+.z-50 { z-index: 50 !important; }
+.z-1050 { z-index: 1050 !important; }
+
+.cursor-pointer { cursor: pointer !important; }
+.max-w-800 { max-width: 800px !important; }
+.max-w-650 { max-width: 650px; }
+.max-w-550 { max-width: 550px; }
+.max-w-600 { max-width: 600px; }
+.max-h-400 { max-height: 400px; }
+
+.min-h-250 { min-height: 250px; }
+.min-h-350 { min-height: 350px; }
+.min-h-600 { min-height: 600px; }
+.min-h-auto { min-height: auto !important; }
+.min-vh-60 { min-height: 60vh; }
+.min-vh-80 { min-height: 80vh; }
+
+.opacity-95 { opacity: 0.95 !important; }
+.transition-all-300 { transition: all 0.3s ease !important; }
+
+/* =========================================
+   🌙 MODO OSCURO (DARK MODE) OVERRIDES
+   ========================================= */
+[data-bs-theme="dark"] body {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Inversión de fondos claros */
+[data-bs-theme="dark"] .bg-white,
+[data-bs-theme="dark"] .bg-light,
+[data-bs-theme="dark"] .bg-body,
+[data-bs-theme="dark"] .hero-catalogos,
+[data-bs-theme="dark"] .saas-hero,
+[data-bs-theme="dark"] .benefits-section,
+[data-bs-theme="dark"] .wa-widget,
+html[data-bs-theme="dark"] .spax-preloader {
+    background-color: #1a1a1a !important;
+}
+
+/* Inversión de textos */
+[data-bs-theme="dark"] .text-dark,
+[data-bs-theme="dark"] .text-body,
+[data-bs-theme="dark"] .title-hero,
+[data-bs-theme="dark"] .benefit-text h5 {
+    color: #f8f9fa !important;
+}
+
+[data-bs-theme="dark"] .text-secondary {
+    color: #b0b0b0 !important;
+}
+
+/* Tarjetas y contenedores */
+[data-bs-theme="dark"] .spax-organic-card,
+[data-bs-theme="dark"] .category-table-wrapper,
+[data-bs-theme="dark"] .editorial-card,
+[data-bs-theme="dark"] .noticia-box,
+[data-bs-theme="dark"] .editorial-catalog-card,
+[data-bs-theme="dark"] .card {
+    background-color: #1e1e1e !important;
+    border-color: #333 !important;
+}
+
+[data-bs-theme="dark"] .organic-tab-btn:not(.active) {
+    background-color: #1e1e1e !important;
+    border-color: #333 !important;
+    color: #e0e0e0 !important;
+}
+
+[data-bs-theme="dark"] .card-img-wrapper {
+    background-color: #252525 !important;
+}
+
+/* Modales */
+[data-bs-theme="dark"] .modal-content,
+[data-bs-theme="dark"] .col-md-7.bg-white {
+    background-color: #1a1a1a !important;
+    color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .modal-header,
+[data-bs-theme="dark"] .border-bottom {
+    border-color: rgba(255,255,255,0.1) !important;
+}
+
+/* Inputs y Botones claros */
+[data-bs-theme="dark"] .form-control,
+[data-bs-theme="dark"] .form-select,
+[data-bs-theme="dark"] .search-pill-input {
+    background-color: #252525 !important;
+    color: #fff !important;
+    border-color: #333 !important;
+}
+
+/* Fondos técnicos / Grid (Blueprint) */
+[data-bs-theme="dark"] .catalogos-section-bg {
+    background-color: #121212 !important;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px) !important;
+}
+
+/* Invertir imágenes o logos */
+[data-bs-theme="dark"] .decor-drawn {
+    filter: grayscale(100%) invert(1) opacity(0.2) !important;
+}
+html[data-bs-theme="dark"] .preloader-logo {
+    filter: brightness(0) invert(1) !important;
+}
+
+/* Widget WhatsApp Dark Mode (Estilo nativo de WhatsApp Web) */
+[data-bs-theme="dark"] .wa-body {
+    background-color: #0b141a !important;
+}
+[data-bs-theme="dark"] .wa-footer {
+    background-color: #1f2c34 !important;
+    border-color: #333 !important;
+}
+[data-bs-theme="dark"] .wa-footer .bg-white {
+    background-color: #2a3942 !important;
+}
+[data-bs-theme="dark"] .chat-bubble-1 > div,
+[data-bs-theme="dark"] .chat-bubble-3 > div {
+    background-color: #202c33 !important;
+}
+[data-bs-theme="dark"] .chat-bubble-1 > div .position-absolute,
+[data-bs-theme="dark"] .chat-bubble-3 > div .position-absolute {
+    border-top-color: #202c33 !important;
+}
+[data-bs-theme="dark"] .chat-bubble-2 > div {
+    background-color: #005c4b !important;
+}
+[data-bs-theme="dark"] .chat-bubble-2 > div .position-absolute {
+    border-top-color: #005c4b !important;
+}
+[data-bs-theme="dark"] .chat-bubble-1 p,
+[data-bs-theme="dark"] .chat-bubble-2 p,
+[data-bs-theme="dark"] .chat-bubble-3 p {
+    color: #e9edef !important;
+}

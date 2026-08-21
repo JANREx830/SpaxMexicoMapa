@@ -1,0 +1,26 @@
+/* css/base/variables.css */
+:root {
+    /* Paleta Principal */
+    --spax-green: #0d6e3a;
+    --spax-light-green: #158b4b;
+    --spax-dark: #1a1a1a;
+    --spax-cream: #F9F9F8;
+    --spax-gray: #f4f4f4;
+    --text-muted: #7a7a7a;
+    --text-main: #333333;
+
+    /* Paleta Blueprint (Spax México) */
+    --grid-color: rgba(13, 110, 58, 0.12);
+    --spax-yellow-btn: #fdf5d3;
+
+    /* Sombras Premium */
+    --shadow-soft: 0 15px 35px rgba(0,0,0,0.06);
+    --shadow-float: 0 25px 50px rgba(13, 110, 58, 0.2);
+}
+
+/* Variables para Modo Oscuro */
+html[data-bs-theme="dark"] {
+    --spax-cream: #121212 !important;
+    --spax-gray: #1e1e1e !important;
+    --text-muted: #a0a0a0 !important;
+}

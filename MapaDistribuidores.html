@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Spax distribuidores en México</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    
+      <link rel="icon" type="image/png" href="./assets/comunes/1191010400253_2.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link rel="stylesheet" href="css/base/variables.css">
+    <link rel="stylesheet" href="css/base/reset.css">
+    <link rel="stylesheet" href="css/base/tipografia.css">
+    <link rel="stylesheet" href="css/base/global.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+   
+     <link rel="stylesheet" href="css/layout/navbar.css">
+    <link rel="stylesheet" href="css/layout/hero.css">
+    <link rel="stylesheet" href="css/layout/sections.css">
+    <link rel="stylesheet" href="css/layout/grid.css">
+    <link rel="stylesheet" href="css/layout/footer.css">
+
+  <link rel="stylesheet" href="css/components/animaciones.css">
+    <link rel="stylesheet" href="css/components/botones.css">
+    <link rel="stylesheet" href="css/components/cards.css">
+    <link rel="stylesheet" href="css/components/modal.css">
+    <link rel="stylesheet" href="css/components/slider.css">
+
+    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="stylesheet" href="./css/pages/page-spaxmexico.css">
+</head>
+<body class="bg-blueprint"> 
+
+    <div id="preloader-container"></div>
+
+    <header id="navbar-container" class="position-absolute w-100 pt-3 z-1050"></header>
+
+    <section class="product-search-section">
+        
+        <img src="./assets/comunes/MASSZEICHNUNG_SPAX-1191010400303.png" alt="Plano SPAX" class="decor-drawn d-none d-lg-block" style="top: 5%; left: -2%; width: 250px;  transform: rotate(-10deg);">
+        <img src="./assets/comunes/MASSZEICHNUNG_SPAX-1191010400405.png" alt="Plano SPAX" class="decor-drawn d-none d-lg-block" style="top: 15%; right: -2%; width: 280px;  transform: rotate(15deg);">
+        <img src="./assets/comunes/MASSZEICHNUNG_SPAX-1191010400303.png" alt="Plano SPAX" class="decor-drawn d-none d-lg-block" style="bottom: 10%; left: 5%; width: 220px;  transform: rotate(5deg);">
+        <img src="./assets/comunes/MASSZEICHNUNG_SPAX-1191010400405.png" alt="Plano SPAX" class="decor-drawn d-none d-lg-block" style="bottom: 5%; right: 10%; width: 260px;  transform: rotate(-5deg);">
+        <div class="container position-relative z-10">
+            <div class="row align-items-center">
+                
+                <div class="col-12 col-lg-5 mb-5 mb-lg-0 prod-anim-left text-center text-lg-start pe-lg-5">
+                   
+                    
+                    <h2 class="display-5 text-uppercase text-body mb-3 title-premium-sm">
+                       Cada vez más <br>Cerca de ti
+                    </h2>
+                    
+                    <div style="width: 40px; height: 4px; background-color: var(--spax-green); margin-bottom: 30px; border-radius: 2px;" class="mx-auto mx-lg-0"></div>
+                    
+                    <p class="fs-5 text-secondary mb-5" style="max-width: 550px; line-height: 1.8; text-align: justify;">
+                        Localiza tu punto de venta más cercano. Contamos con una amplia red de distribuidores oficiales SPAX en todo México.
+                    </p>
+                    
+                    <form id="search-distributors-form" action="#" class="mt-4 text-start">
+                        <div class="search-inputs-wrapper">
+                            <div class="position-relative flex-grow-1" style="min-width: 200px;">
+                                <input type="text" id="search-name" class="form-control input-pill ps-4" placeholder="Busca por estado...">
+                                <i class="fas fa-search position-absolute" style="right: 20px; top: 50%; transform: translateY(-50%); color: #aaa;"></i>
+                            </div>
+                            
+                            <div class="flex-grow-1" style="min-width: 180px;">
+                                <select id="search-state" class="form-select input-pill">
+                                    <option value="" selected>Todos los estados</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" id="btn-search-distributors" class="btn-spax-pill mt-2">
+                            BUSCAR ESTADO
+                        </button>
+                          <a href="#map" id="btn-show-all-points" class="btn btn-outline-success rounded-pill px-6 py-3 text-uppercase fw-bold border-2 d-inline-flex align-items-center justify-content-center btn-premium" style="letter-spacing: 1px;">
+                              REFRESCAR <i class="fas fa-map-marker-alt ms-2"></i>
+                          </a>
+                        <div id="search-error-msg" class="text-danger mt-3 fw-bold d-none" style="font-size: 0.9rem; transition: opacity 0.3s ease;">
+                            <i class="fas fa-exclamation-circle me-1"></i> No se encontraron estados con esos criterios. Selecciona una opción válida.
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-12 col-lg-7 prod-anim-right position-relative text-center">
+                    <img src="./assets/1401470390165_4003530122712_2 (2).png" alt="Botes de SPAX en la arena" class="img-fluid hero-search-img" style="object-fit: contain; max-height: 400px; transform: scale(1.1); z-index: 2; position: relative; filter: drop-shadow(0px 25px 25px rgba(0,0,0,0.3));">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <main class="blueprint-section">
+        <img src="./assets/comunes/1191010400253_2.png" alt="Decoración SPAX" class="position-absolute shadow-3d-premium" style="width: 400px; top: -50px; right: -60px; z-index: 0; transform: rotate(45deg); pointer-events: none; opacity: 0.8;">
+        <img src="./assets/comunes/1191010400253_2.png" alt="Decoración SPAX" class="position-absolute shadow-3d-premium" style="width: 300px; bottom: 50px; left: -100px; z-index: 1; transform: rotate(-45deg); pointer-events: none; opacity: 0.5;">
+
+        <div class="row g-0 align-items-stretch w-100"> 
+            <div class="col-12 col-lg-5 d-flex flex-column p-5 map-anim-left">
+                <div class="text-center text-lg-start" style="max-width: 500px; z-index: 2;">
+                    <span class="badge bg-white text-success px-4 py-2 rounded-pill text-uppercase shadow-sm fw-bold mb-4" style="border: 1px solid rgba(13, 110, 58, 0.2);">
+                        Puntos clave en México
+                    </span>
+                    
+                    <h2 class="display-5 text-uppercase text-body mb-3 title-premium-sm">
+                        Descubre SPAX<br>en tu estado
+                    </h2>
+                    
+                    <div style="width: 40px; height: 4px; background-color: var(--spax-green); margin-bottom: 30px; border-radius: 2px;" class="mx-auto mx-lg-0"></div>
+                </div>
+                <div id="distributor-list-container" class="mt-4 flex-grow-1" style="min-height: 0; z-index: 2;">
+                    <!-- La lista de distribuidores se insertará aquí -->
+                </div>
+            </div>
+            <div class="col-12 col-lg-7 map-anim-right p-4 p-lg-5 pe-lg-5 d-flex flex-column position-relative" style="z-index: 2;">
+                <div id="map" class="flex-grow-1 bg-white"></div>
+            </div>
+        </div>
+    </main>
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="./js/animations/footer-wave.js" defer></script>
+    <script src="./js/core/core.js" defer></script>
+    
+    <script src="./js/pages/spaxmexico-db.js" defer></script>
+    <script src="./js/pages/spaxmexico-card.js" defer></script>
+    <script src="./js/pages/spaxmexico-search.js" defer></script>
+    <script src="./js/pages/page-spaxmexico.js" defer></script>
+
+</body>
+</html>

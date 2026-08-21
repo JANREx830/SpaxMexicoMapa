@@ -1,0 +1,202 @@
+/* css/layout/hero.css */
+
+/* Filtro oscuro encima de la imagen */
+.hero-overlay {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+/* La ola SVG */
+.wave-bottom {
+    display: none !important;
+}
+
+/* Eliminación forzada de olas */
+.hero-catalogos > svg,
+.hero-interno-container > svg,
+[class*="wave-container"],
+[class*="wave-wrapper"],
+[class*="shape-divider"],
+[class*="custom-shape"] {
+    display: none !important;
+}
+
+.hero-gradient {
+    background: radial-gradient(circle at 50% 40%, #158b4b 0%, #094f29 100%);
+}
+
+.hero-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 150px; 
+    padding-bottom: 100px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.hero-video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.hero-video.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.floating-items-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.floating-item {
+    position: absolute;
+    filter: blur(1px);
+    opacity: 0.85;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), filter 0.8s ease;
+}
+
+.screw-top-left {
+    top: 15%;
+    left: 2%;
+    width: 100px;
+    --rot-start: 15deg; 
+    --rot-end: 20deg; 
+    animation: float 6s ease-in-out infinite;
+}
+
+.screw-bottom-left {
+    bottom: 15%;
+    left: 5%;
+    width: 180px;
+    --rot-start: -25deg; 
+    --rot-end: -15deg; 
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+.drill-top-right {
+    top: 15%;
+    right: 2%;
+    width: 140px;
+    --rot-start: 45deg; 
+    --rot-end: 55deg; 
+    animation: float 7s ease-in-out infinite;
+}
+
+.screw-mid-right {
+    top: 65%;
+    right: 5%;
+    width: 100px;
+    --rot-start: -15deg; 
+    --rot-end: -5deg; 
+    animation: float 5s ease-in-out infinite alternate;
+}
+
+.bg-spax-green {
+    background-color: var(--spax-green);
+}
+
+.wave-top {
+    top: 0;
+    left: 0;
+    transform: translateY(-99%);
+    z-index: 10;
+}
+
+/* Animaciones de explosión de tornillos */
+.blur-medium { filter: blur(4px); }
+.blur-hard { filter: blur(6px) opacity(0.6); }
+
+.floating-item.screws-exit, .floating-item.screws-enter {
+    filter: blur(0px) !important;
+}
+
+.screw-top-left.screws-exit { animation: explode-tl-out 0.4s ease-in forwards; }
+.screw-bottom-left.screws-exit { animation: explode-bl-out 0.4s ease-in forwards; }
+.drill-top-right.screws-exit { animation: explode-tr-out 0.4s ease-in forwards; }
+.screw-mid-right.screws-exit { animation: explode-mr-out 0.4s ease-in forwards; }
+
+.screw-top-left.screws-enter { animation: explode-tl-in 0.4s ease-out forwards; }
+.screw-bottom-left.screws-enter { animation: explode-bl-in 0.4s ease-out forwards; }
+.drill-top-right.screws-enter { animation: explode-tr-in 0.4s ease-out forwards; }
+.screw-mid-right.screws-enter { animation: explode-mr-in 0.4s ease-out forwards; }
+
+/* Ajustes responsivos */
+.hero-text-container {
+    z-index: 10;
+    width: 100%;
+}
+@media (max-width: 991px) {
+    .hero-text-container { margin-top: 1rem; text-align: center !important; }
+    
+    .hero-slide { 
+        text-align: center !important; 
+        width: 100% !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    .hero-text-container *,
+    .hero-slide * {
+        text-align: center !important;
+        justify-content: center !important;
+    }
+    .hero-slide [class*="col-"],
+    .hero-slide > div {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        width: 100% !important;
+    }
+    .hero-text-container p,
+    .hero-slide p,
+    .hero-slide [style*="width: 40px"],
+    .hero-slide .divider-green {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: 100% !important;
+    }
+    .hero-container { min-height: auto; padding-top: 130px; padding-bottom: 70px; }
+}
+@media (min-width: 992px) {
+    .hero-text-container { transform: translateY(0); }
+}
+
+.wave-shape,
+.wave-animation-container,
+.wave-animation-container .wave-bottom {
+    display: none !important;
+}
+
+.hero-sm { min-height: 40vh !important; }
+.hero-overlay-light { background: rgba(255, 252, 252, 0.116); z-index: 1; }

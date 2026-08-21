@@ -1,0 +1,58 @@
+/* css/layout/navbar.css */
+
+/*  NAVBAR */
+.navbar-spax {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    width: 100%;
+    z-index: 1050;
+    transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease !important;
+}
+
+.navbar-spax.scrolled {
+    background: radial-gradient(circle at 50% 40%, rgba(21, 139, 75, 0.95) 0%, rgba(9, 79, 41, 0.95) 100%) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    padding-top: 0.8rem !important;
+    padding-bottom: 0.8rem !important;
+}
+
+.navbar-spax.scrolled .navbar-logo {
+    height: 35px;
+}
+
+.navbar-spax .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-spax .nav-link:hover {
+    color: #ffffff !important;
+    transform: translateY(-2px);
+}
+
+.navbar-logo {
+    height: 45px;
+    object-fit: contain;
+    transition: height 0.4s ease;
+}
+
+@media (max-width: 1199.98px) {
+    .navbar-collapse {
+        background: radial-gradient(circle at 50% 40%, rgba(21, 139, 75, 0.98) 0%, rgba(9, 79, 41, 0.98) 100%);
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin-top: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+}
+.navbar-toggler { border-color: rgba(255,255,255,0.5) !important; }
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='round' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
