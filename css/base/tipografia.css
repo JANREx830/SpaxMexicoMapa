@@ -1,12 +1,10 @@
-/* css/base/typography.css */
-/* Tipografía Global */
+
 html, body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #ffffff; /* Color base claro */
-    color: #333; /* Color de texto base */
+    background-color: #ffffff; 
+    color: #333; 
 }
 
-/* Tipografía Agresiva y Milimétrica */
 .title-premium {
     font-weight: 900 !important;
     letter-spacing: -2px !important;

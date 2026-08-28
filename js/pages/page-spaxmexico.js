@@ -3,14 +3,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const mapContainer = document.getElementById('map');
     if (!mapContainer || typeof L === 'undefined') return;
 
-    // Suponiendo que spaxmexico-db.js, spaxmexico-card.js y spaxmexico-search.js se cargan antes que este script
     const { statesList, stores } = getSpaxDistributorData();
 
     const normalizeStr = (str) => {
         return str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
     };
 
-    // Helper para encontrar el nombre de estado de SPAX correspondiente a un nombre de estado de GeoJSON
     function findMatchingSpaxState(geoJsonStateName) {
         const normalizedGeoJsonName = normalizeStr(geoJsonStateName);
         const mapping = {
@@ -29,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function() {
         return directMatch || null;
     }
 
-    // --- 4. CONFIGURACIÓN DEL MAPA LEAFLET ---
     let defaultCenter = [23.6345, -102.5528];
     const mexicoBounds = L.latLngBounds(
         L.latLng(14.5, -118.5), 
@@ -37,29 +34,25 @@ document.addEventListener("DOMContentLoaded", function() {
     );
 
     var map = L.map('map', { 
-        scrollWheelZoom: false, // Desactiva zoom con rueda del ratón
-        touchZoom: false,       // Desactiva "pellizcar" para hacer zoom en móviles
-        doubleClickZoom: false, // Desactiva zoom con doble clic
-        maxBounds: mexicoBounds,  // Limita el paneo a México
-        minZoom: 5,             // Evita que se aleje demasiado
-        maxBoundsViscosity: 1.0 // Hace que los bordes sean sólidos
+        scrollWheelZoom: false, 
+        touchZoom: false,      
+        doubleClickZoom: false, 
+        maxBounds: mexicoBounds,  
+        minZoom: 5,             
+        maxBoundsViscosity: 1.0 
     }).setView(defaultCenter, 5);
 
     new ResizeObserver(() => {
         if (map) map.invalidateSize();
     }).observe(document.getElementById('map'));
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        attribution: '© OpenStreetMap & CARTO',
-        subdomains: 'abcd',
-        maxZoom: 19
-    }).addTo(map);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
 
-    // --- 5. ICONO PERSONALIZADO PARA MARCADORES ---
-    // Usamos un divIcon con FontAwesome para no depender de una imagen. ¡Asegúrate de que FontAwesome esté cargado en tu página!
     const spaxIcon = L.divIcon({
         html: `<i class="fas fa-map-marker-alt" style="color: #0d6e3a; font-size: 30px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>`,
-        className: 'spax-marker-icon', // Clase vacía para no interferir con los estilos de Leaflet
+        className: 'spax-marker-icon', 
         iconSize: [30, 30],
         iconAnchor: [15, 30],
         popupAnchor: [0, -30]
@@ -79,24 +72,22 @@ document.addEventListener("DOMContentLoaded", function() {
                 style: getGeoJsonStyle,
                 onEachFeature: onEachFeature
             }).addTo(map);
-            // Inicializa la funcionalidad de búsqueda después de que las capas del mapa estén listas
+      
             setupSpaxMapSearch(stores, normalizeStr, renderStores, geoJsonLayer, getGeoJsonStyle, updateSelectedState, map);
         })
         .catch(err => console.log("Error cargando el GeoJSON de México:", err));
 
-    // Agrega un listener a cada estado del mapa
     function onEachFeature(feature, layer) {
         const spaxStateName = findMatchingSpaxState(feature.properties.name);
 
-        // Añade un tooltip para mostrar el nombre del estado al pasar el mouse
         layer.bindTooltip(feature.properties.name, {
             permanent: false,
             direction: 'center',
             className: 'spax-state-tooltip',
-            sticky: true // El tooltip sigue al cursor del mouse
+            sticky: true 
         });
 
-        if (spaxStateName) { // Solo agrega listener si es un estado con distribuidores
+        if (spaxStateName) { 
             layer.on({
                 click: (e) => {
                     const stateSelect = document.getElementById('search-state');
@@ -106,7 +97,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (stateSelect && inputName && btnSearch) {
                         inputName.value = '';
                         stateSelect.value = spaxStateName;
-                        // Dispara la búsqueda programáticamente
                         btnSearch.click();
                     }
                 }
@@ -123,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function() {
             isSelected = (normalizeStr(spaxStateNameForFeature) === normalizedSelectedState);
         }
 
-        // Si un estado está seleccionado (desde la búsqueda o un clic)
         if (normalizedSelectedState) {
             if (isSelected) {
                 return { color: '#0d6e3a', weight: 3, fillColor: '#0d6e3a', fillOpacity: 0.6, className: 'leaflet-interactive-spax' };
@@ -133,7 +122,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
-        // Vista inicial, sin selección
         if (spaxStateNameForFeature) {
             return { color: '#0d6e3a', weight: 2, fillColor: '#0d6e3a', fillOpacity: 0.25, className: 'leaflet-interactive-spax' };
         } else {
@@ -152,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (listContainer) {
                 listContainer.innerHTML = `<div class="text-muted text-center p-5">No se encontraron distribuidores con estos criterios.</div>`;
             }
-            map.setView(defaultCenter, 5); // Reset view on no results
+            map.setView(defaultCenter, 5); 
             return;
         }
 
@@ -162,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         filteredStores.forEach(store => {
             const marker = L.marker([store.latitude, store.longitude], { icon: spaxIcon });
-            // Usamos la función del archivo spaxmexico-card.js
+      
             marker.bindPopup(createDistributorPopupHtml(store));
             markerGroup.addLayer(marker);
             markers.push({ storeId: store.id, marker: marker });
@@ -192,18 +180,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (filteredStores.length === 1) {
             const store = filteredStores[0];
-            map.flyTo([store.latitude, store.longitude], 13); // Zoom más cercano para un solo resultado
+            map.flyTo([store.latitude, store.longitude], 13); 
         } else if (filteredStores.length > 1 && filteredStores.length < stores.length) {
-            // Si hay un resultado de búsqueda con varios puntos, ajústalo en la pantalla
+         
             map.fitBounds(markerGroup.getBounds(), { padding: [50, 50] });
-        } else { // Esto es para cuando se muestran todas las tiendas
+        } else { 
             map.setView(defaultCenter, 5);
         }
     }
 
     renderStores(stores);
 
-    // --- ANIMACIONES GSAP ---
     if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
         gsap.registerPlugin(ScrollTrigger);
 

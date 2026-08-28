@@ -1,25 +1,21 @@
-/* css/base/reset.css */
-/* Reset de Responsividad y Desbordamiento */
+
 html, body {
     width: 100%;
     max-width: 100vw;
-    overflow-x: hidden !important; /* El candado maestro para móviles */
+    overflow-x: hidden !important;
     position: relative;
 }
 
-/* Recorte de elementos desbordados */
 main, section {
     width: 100%;
     max-width: 100vw;
     overflow-x: hidden !important;
 }
 
-/* Suavizado de fuentes para un renderizado más nítido */
 body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Reset para la barra de Google Translate */
 .goog-te-banner-frame.skiptranslate, .skiptranslate > iframe {
     display: none !important;
 }

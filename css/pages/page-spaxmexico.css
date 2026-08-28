@@ -131,18 +131,15 @@ body {
 }
 .spax-popup-link:hover { text-decoration: underline; }
 
-/* Clase para hacer los polígonos del mapa interactivos */
 .leaflet-interactive-spax {
     cursor: pointer;
 }
 
-/* DISTRIBUTOR LIST STYLES */
 #distributor-list-container {
     overflow-y: auto;
-    padding-right: 10px; /* Espacio para la barra de scroll */
+    padding-right: 10px; 
 }
 
-/* Estilo de la barra de scroll para Webkit (Chrome, Safari) */
 #distributor-list-container::-webkit-scrollbar {
     width: 8px;
 }
@@ -178,7 +175,6 @@ body {
     margin-bottom: 0;
 }
 
-/* TOOLTIP FOR STATES ON MAP */
 .spax-state-tooltip {
     background-color: var(--spax-dark) !important;
     border: none !important;
@@ -194,10 +190,9 @@ body {
 .leaflet-tooltip-bottom:before,
 .leaflet-tooltip-left:before,
 .leaflet-tooltip-right:before {
-    border: none !important; /* Remove default arrow for a cleaner look */
+    border: none !important; 
 }
 
-/* INSPIRE SECTION */
 .inspire-section {
     position: relative;
     padding: 100px 0; 
@@ -205,18 +200,17 @@ body {
     z-index: 10;
 }
 
-/* RESPONSIVE */
 @media (max-width: 991.98px) {
-    .blueprint-section { display: block; } /* En móvil, volvemos a block para que se apilen */
+    .blueprint-section { display: block; } 
     .blueprint-section [class*="col-lg-"] {
-        min-height: 60vh; /* Damos una altura mínima a las columnas en móvil */
+        min-height: 60vh; 
     }
     .product-search-section { padding: 120px 0 60px 0; }
 }
 
 @media (max-width: 767.98px) {
     .product-search-section { padding: 100px 0 40px 0; }
-    .blueprint-section { padding: 0; min-height: auto; } /* En móvil, las secciones se apilan */
+    .blueprint-section { padding: 0; min-height: auto; }
     .blueprint-section .col-12 { height: 60vh; min-height: 450px; }
     .hero-search-img { 
         transform: scale(1) !important; 
@@ -226,7 +220,6 @@ body {
     .btn-spax-pill { width: 100%; justify-content: center; }
 }
 
-/* NAVBAR OVERRIDE */
 .navbar-spax {
     background: radial-gradient(circle at 50% 40%, rgba(21, 139, 75, 1) 0%, rgba(9, 79, 41, 1) 100%) !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;

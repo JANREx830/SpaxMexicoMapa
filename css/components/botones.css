@@ -1,6 +1,4 @@
-/* css/components/botones.css */
 
-/* Botón Premium (Efecto de elevación) */
 .btn-premium {
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
@@ -35,30 +33,6 @@
     color: white;
 }
 
-/* Botón Píldora Premium (Usado en tutoriales.html) */
-.btn-pill-premium {
-    background-color: var(--spax-green);
-    color: white;
-    font-weight: 800;
-    letter-spacing: 1px;
-    padding: 16px 36px;
-    border-radius: 50px;
-    text-transform: uppercase;
-    border: 2px solid var(--spax-green);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-}
-.btn-pill-premium:hover {
-    background-color: #0a562d;
-    border-color: #0a562d;
-    color: white;
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-float);
-}
-
 /* Botón Circular */
 .btn-circle-50 { 
     width: 50px; 
@@ -70,7 +44,6 @@
 .btn-formal {
     background-color: var(--spax-green);
     color: white;
-    border-radius: 50px;
     padding: 15px 35px;
     font-weight: 700;
     text-transform: uppercase;
@@ -106,35 +79,4 @@
 #lang-toggle {
     font-weight: 800;
     font-size: 0.85rem;
-}
-
-/* Botón de Play (Página de Tutoriales) */
-.spax-play-btn {
-    width: 100px;
-    height: 100px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(5px);
-    border: 3px solid #ffffff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    color: var(--spax-green);
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
-    animation: spax-pulse-white 2s infinite;
-}
-.spax-play-btn i {
-    margin-left: 8px;
-    transition: transform 0.3s ease;
-}
-.spax-play-btn:hover {
-    background: #ffffff;
-    transform: scale(1.1);
-    border-color: var(--spax-green);
-}
-.spax-play-btn:hover i {
-    transform: scale(1.1);
 }
